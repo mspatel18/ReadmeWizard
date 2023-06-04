@@ -1,12 +1,18 @@
 import { useState } from 'react'
+import { Routes, Route } from "react-router-dom";
 import './App.css'
-
+import Generate from './pages/Generate.jsx';
+import Landing from './pages/Landing.jsx';
 function App() {
  
 
   return (
     <>
-      <h2>Hello world</h2>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/generate" element={<Generate />} />
+      </Routes>
+      
     </>
   )
 }

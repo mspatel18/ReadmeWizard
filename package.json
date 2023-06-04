@@ -13,8 +13,18 @@
     "url": "git+https://github.com/mspatel18/ReadmeWizard.git"
   },
   "dependencies": {
+    "@coreui/coreui": "^4.2.6",
+    "@coreui/react": "^4.8.0",
+    "axios": "^1.4.0",
+    "github-markdown-css": "^5.2.0",
+    "marked": "^5.0.4",
+    "octokit": "^2.0.19",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.7",
+    "react-router-dom": "^6.11.2",
+    "react-showdown": "^2.3.1",
+    "showdown": "^2.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
