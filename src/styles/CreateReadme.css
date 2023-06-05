@@ -1,0 +1,29 @@
+.wrapper{
+    display: flex;
+    flex-direction: row;
+}
+.input-container{
+    margin: 0px;
+    
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.markdown-container{
+    position: relative;
+    margin: 0px;
+    padding: 20px;
+    width: 50%; 
+    background-color: #f2f2f2;
+}
+.input-title{
+    color: black;
+    font-size: medium;
+    margin:5px 0px;
+}
+.section-title{
+    color: black;
+    font-size: x-large;
+    font-weight: bold;
+    margin:10px 0px;
+}

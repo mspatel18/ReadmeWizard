@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 import './App.css'
-import Generate from './pages/Generate.jsx';
 import Landing from './pages/Landing.jsx';
+import CreateReadme from './pages/CreateReadme.jsx';
 function App() {
  
 
@@ -10,7 +10,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/generate" element={<Generate />} />
+        <Route path="/create-readme" element={<CreateReadme />} />
       </Routes>
       
     </>

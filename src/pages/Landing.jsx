@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 
 
-export default function Generate() {
+export default function Landing() {
     const navigate = useNavigate();
     return(
         <>
             <h2>Landing</h2>
-            <button id="start" onClick={()=>navigate("/generate")}>Start New</button>
+            <button id="start" onClick={()=>navigate("/create-readme")}>Start New</button>
         </>
     )
 }
