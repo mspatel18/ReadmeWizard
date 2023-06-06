@@ -3,44 +3,43 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MarkdownView from "react-showdown";
 import "../styles/CreateReadme.css";
-import {
-    CNavbar,
-    CContainer,
-    CNavbarBrand,
-    CNavbarNav,
-    CFormInput,
-    CFormText,
-} from "@coreui/react";
 export default function CreateReadme() {
     const [name, setName] = useState("");
     const [subtitle,setSubtitle] = useState("");
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
     const [portfolio, setPortfolio] = useState("");
-    const [portfolioLink, setPortfolioLink] = useState("");
-    const markdowntext = `
+    const [portfolioLink, setPortfolioLink] = useState("https://");
+    const [currentlyWorking, setCurrentlyWorking] = useState("");
+    const [currentlyWorkingLink, setCurrentlyWorkingLink] = useState("https://");
+    const [email, setEmail] = useState("");
+    const [currentlyLearning, setCurrentlyLearning] = useState("");
+    const [collaborateOn, setCollaborateOn] = useState("");
+    const [funFact, setFunFact] = useState("");
+    const [badgeStyle, setBadgeStyle] = useState("badge");  
+    const [githubUsername, setGithubUsername] = useState("");
+    const [twitterUsername, setTwitterUsername] = useState("");
+    const [linkedinUsername, setLinkedinUsername] = useState("");
+    const [instagramUsername, setInstagramUsername] = useState("");
+    const [leetcodeUsername, setLeetcodeUsername] = useState("");
     
-${name ? `
-Hi 👋 I am ${name}
-===========================` : ""}
-
-${subtitle ? `
-${subtitle}
---------------------------------------------`: ""}
-${description ? `
-${description}` : ""}
+    const markdowntext = `${name ? `# Hi 👋 I am ${name}` : ""}
+${subtitle ? `## ${subtitle}`: ""}
+${description ? `${description}`: ""}
 ${location ? `* 🌍  I'm based in ${location}`:""}
 ${portfolio && portfolioLink ? `* 🖥️  See my portfolio at [${portfolio}](${portfolioLink})`:""}
-* ✉️  You can contact me at [mannpatel3118@gmail.com](mailto:mannpatel3118@gmail.com)
-* 🧠  I'm currently learning DSA & React
-* 🤝  I'm open to collaborating on interesting projects
+${currentlyWorking && currentlyWorkingLink ? `* 👨‍💻  I'm currently working on [${currentlyWorking}](${currentlyWorkingLink})`:""}
+${email ? `* ✉️  You can reach me at [${email}](mailto:${email})`:""}
+${currentlyLearning ? `* 🧠  I'm currently learning ${currentlyLearning}`:""}
+${collaborateOn ? `* 🤝  I'm open to collaborating on ${collaborateOn}`:""}
+${funFact ? `* ⚡ Fun fact: ${funFact}`:""}
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/Mspatel_18?label=Follow)](https://twitter.com/Mspatel_18)
-[![GitHub Follow](https://img.shields.io/github/followers/mspatel18?label=Follow&style=social)](https://github.com/mspatel18)
-[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/mspatel18/)](https://www.linkedin.com/in/mspatel18/)
-[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=badge&logo=instagram&logoColor=white)](https://instagram.com/mspatel18)
-[![Leetcode](https://img.shields.io/badge/-LeetCode-FFA116?style=badge&logo=LeetCode&logoColor=black)](https://leetcode.com/mspatel18/)
-[![website](https://img.shields.io/badge/Portfolio-46a2f1.svg?&style=badge&logo=Google-Chrome&logoColor=black&link=https://mspatel18-threejs.netlify.app/)](https://mspatel18-threejs.netlify.app/)
+
+${githubUsername ? `[![GitHub Follow](https://img.shields.io/github/followers/${githubUsername}?label=Github&style=${badgeStyle}&logo=github)](https://github.com/${githubUsername})`:""}
+${twitterUsername ? `[![Twitter Follow](https://img.shields.io/badge/Twitter-grey?style=${badgeStyle}&logo=twitter)](https://twitter.com/${twitterUsername})`:""}
+${linkedinUsername ? `[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=${badgeStyle}&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/${linkedinUsername}/)`:""}
+${instagramUsername ? `[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=${badgeStyle}&logo=instagram&logoColor=white)](https://instagram.com/${instagramUsername})`:""}
+${leetcodeUsername ? `[![Leetcode](https://img.shields.io/badge/-LeetCode-FFA116?style=${badgeStyle}&logo=LeetCode&logoColor=black)](https://leetcode.com/${leetcodeUsername}/)`:""}
 ### Skills
 
 
@@ -75,37 +74,54 @@ ${portfolio && portfolioLink ? `* 🖥️  See my portfolio at [${portfolio}]($
 `
     const navigate = useNavigate();
     return(
-        <>
-        <CNavbar colorScheme="dark" style={{backgroundColor:"#19191B"}} >
-        <CContainer fluid>
-          <CNavbarBrand href="#">ReadmeWizard</CNavbarBrand>
-          {/* profile */}
-            <CNavbarNav>  
-            <a target="_blank"  href="https://github.com/mspatel18">Github</a>
-            </CNavbarNav>
-        </CContainer >
-      </CNavbar>
-      <CContainer fluid className="wrapper">
-
-      <CContainer  className="input-container">
-        <div className="section-title">Introduction</div>
-      <div className="input-title">Hi 👋 I am</div>
-      <CFormInput placeholder="Name"  onChange={(e) => setName(e.target.value)}  style={{width:"50",display:"inline"}}/>
-      <div className="input-title">🔉Subtitle</div>
-      <CFormInput placeholder="Web Developer and Designer" onChange={(e) => setSubtitle(e.target.value)}/>
-        <div className="input-title">Description</div>  
-        <CFormInput placeholder="eg. I'm in my 2nd year of college trying my hands at coding, graphic design, and 3d modeling" onChange={(e) => setDescription(e.target.value)}/>
-        <div className="section-title">About Me</div>
-        <div className="input-title">🌍 I'm based in</div>
-        <CFormInput placeholder="eg. India " onChange={(e) => setLocation(e.target.value)}/>
-        <div className="input-title">🖥️ See my portfolio at</div>
-        <CFormInput placeholder="MyPortfolio " onChange={(e) => setPortfolio(e.target.value)}/>
-        <CFormInput placeholder="https://myportfolio.com"  onChange={(e) => setPortfolioLink(e.target.value)}/>
-      </CContainer>
-      <CContainer className="markdown-container">
-      <MarkdownView markdown={markdowntext} options={{ tables: true, emoji: true }} />
-    </CContainer>
-      </CContainer>
-        </>
+    <>
+      <div className="wrapper">
+        <div  className="input-container">
+          <div className="section-title">Introduction</div>
+          <div className="input-title">Hi 👋 I am:</div>
+          <input placeholder="Name"  onChange={(e) => setName(e.target.value)}  style={{width:"50",display:"inline"}}/>
+          <div className="input-title">🔉Subtitle:</div>
+          <input placeholder="Web Developer and Designer" onChange={(e) => setSubtitle(e.target.value)}/>
+          <div className="input-title">Description</div>  
+          <input placeholder="eg. I'm in my 2nd year of college trying my hands at coding, graphic design, and 3d modeling" onChange={(e) => setDescription(e.target.value)}/>
+          <div className="section-title">About Me</div>
+          <div className="input-title">🌍 I'm based in:</div>
+          <input placeholder="India " onChange={(e) => setLocation(e.target.value)}/>
+          <div className="input-title">🖥️ See my portfolio at:</div>
+          <input placeholder="MyPortfolio " onChange={(e) => setPortfolio(e.target.value)}/>
+          <input placeholder="https://myportfolio.com" value={portfolioLink}  onChange={(e) => setPortfolioLink(e.target.value)}/>
+          <div className="input-title">🚀 I'm currently working on:</div>
+          <input type="url" placeholder="E-commerce web-app" onChange={(e) => setCurrentlyWorking(e.target.value)}/>
+          <input placeholder="https://projectlink.com" value={currentlyWorkingLink} onChange={(e)=>setCurrentlyWorkingLink(e.target.value)}/>
+          <div className="input-title">✉️ How to reach me at:</div>
+          <input placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
+          <div className="input-title">🧠 I'm currently learning:</div>
+          <input placeholder="React" onChange={(e) => setCurrentlyLearning(e.target.value)}/>
+          <div className="input-title">👨‍💻 I'm looking to collaborate on:</div>
+          <input placeholder="intersting projects" onChange={(e) => setCollaborateOn(e.target.value)}/>
+          <div className="input-title">⚡ Fun Fact</div>
+          <input placeholder="I think I am funny" onChange={(e) => setFunFact(e.target.value)}/>
+          <div className="section-title">Socials
+          <select name="Style" onChange={(e)=> setBadgeStyle(e.target.value)} style={{display:"inline",marginLeft:"10px"}} id="">
+              <option value="flat">Flat</option>
+              <option value="flat-square">Flat Square</option>
+              <option value="plastic">Plastic</option>
+              <option value="for-the-badge">For the Badge</option>
+            </select>
+          </div>
+            
+          <div className="socials">
+            <div className="input-title social-desc"><img className="social-img" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg" alt="Github" /> Github: <input placeholder="username" onChange={(e)=>setGithubUsername(e.target.value)}/></div>
+            <div className="input-title social-desc"><img className="social-img" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/instagram.svg" alt="Instagram" /> Instagram: <input placeholder="username" onChange={(e)=>setInstagramUsername(e.target.value)}/></div>
+            <div className="input-title social-desc"><img className="social-img" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/twitter.svg" alt="Twitter" /> Twitter: <input placeholder="username" onChange={(e)=>setTwitterUsername(e.target.value)}/></div>
+            <div className="input-title social-desc"><img className="social-img" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="Linkedin" /> Linkedin: <input placeholder="username" onChange={(e)=>setLinkedinUsername(e.target.value)}/></div>
+            <div className="input-title social-desc"><img className="social-img" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/leetcode.svg" alt="Leetcode" /> Leetcode: <input placeholder="username" onChange={(e)=>setLeetcodeUsername(e.target.value)}/></div>
+          </div>
+        </div>
+        <div className="markdown-container">
+          <MarkdownView markdown={markdowntext} options={{ tables: true, emoji: true }} />
+        </div>
+      </div>
+    </>
     )
 }

@@ -1,22 +1,49 @@
+
 .wrapper{
     display: flex;
     flex-direction: row;
+    overflow: hidden;
+    /* position: relative; */
 }
 .input-container{
-    margin: 0px;
-    
+    height: 90vh;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     width: 50%;
+    overflow-y: auto;
+}
+.socials{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+}
+.social-desc{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.social-desc input{
+    position:relative;
+    margin-left: 10px;
+}
+.social-img{
+    width: 20px;
+    height: 20px;
+    margin: 0px 5px;
 }
 .markdown-container{
+    height: 90vh;
     position: relative;
-    margin: 0px;
+    margin: 20px;
     padding: 20px;
     width: 50%; 
     background-color: #f2f2f2;
+    overflow-y: auto;
 }
 .input-title{
+
     color: black;
     font-size: medium;
     margin:5px 0px;
