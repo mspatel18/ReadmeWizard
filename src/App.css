@@ -7,3 +7,11 @@ input{
     border: 1px solid #ccc;
     margin: 5px 0px;
 }
+textarea{
+    width: 100%;
+    height: 90%;
+    border: none;
+    outline:none;
+    background-color: inherit;
+    color: inherit;
+}

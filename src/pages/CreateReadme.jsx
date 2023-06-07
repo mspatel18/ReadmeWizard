@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MarkdownView from "react-showdown";
 import "../styles/CreateReadme.css";
 export default function CreateReadme() {
+  const [activeSection, setActiveSection] = useState('preview');
   const [introductionData, setIntroductionData] = useState({
     name: "",
     subtitle: "",
@@ -43,30 +44,7 @@ export default function CreateReadme() {
       geeksforgeeksUsername: "",
     });
     
-    const markdowntext = `${introductionData.name ? `# Hi 👋 I am ${introductionData.name}\n` : ""}${introductionData.subtitle ? `## ${introductionData.subtitle}\n`: ""}${introductionData.description ? `${introductionData.description}\n`: ""}${aboutData.location ? `* 🌍  I'm based in ${aboutData.location}\n`:""}${aboutData.portfolio && aboutData.portfolioLink ? `* 🖥️  See my portfolio at [${aboutData.portfolio}](${aboutData.portfolioLink})\n`:""}${aboutData.currentlyWorking && aboutData.currentlyWorkingLink ? `* 👨‍💻  I'm currently working on [${aboutData.currentlyWorking}](${aboutData.currentlyWorkingLink})\n`:""}${aboutData.email ? `* ✉️  You can reach me at [${aboutData.email}](mailto:${aboutData.email})\n`:""}${aboutData.currentlyLearning ? `* 🧠  I'm currently learning ${aboutData.currentlyLearning}\n`:""}${aboutData.collaborateOn ? `* 🤝  I'm open to collaborating on ${aboutData.collaborateOn}\n`:""}${aboutData.funFact ? `* ⚡ Fun fact: ${aboutData.funFact}`:""}
-
-${social.githubUsername ? `[![GitHub Follow](https://img.shields.io/badge/GitHub-100000?style=${badgeStyle}&logo=github&logoColor=white)](https://github.com/${social.githubUsername})`:""}
-${social.twitterUsername ? `[![Twitter Follow](https://img.shields.io/badge/Twitter-1DA1F2?style=${badgeStyle}&logo=twitter&logoColor=white)](https://twitter.com/${social.twitterUsername})`:""}
-${social.codepenUsername ? `[![Codepen](https://img.shields.io/badge/Codepen-000000?style=${badgeStyle}&logo=codepen&logoColor=white)](https://codepen.io/${social.codepenUsername})`:""}
-${social.stackoverflowUsername ? `[![Stackoverflow](https://img.shields.io/badge/Stackoverflow-FE7A16?style=${badgeStyle}&logo=stackoverflow&logoColor=white)](https://stackoverflow.com/users/${social.stackoverflowUsername})`:""}
-${social.codesandboxUsername ? `[![Codesandbox](https://img.shields.io/badge/Codesandbox-000000?style=${badgeStyle}&logo=codesandbox&logoColor=white)](https://codesandbox.io/${social.codesandboxUsername})`:""}
-${social.kaggleUsername ? `[![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=${badgeStyle}&logo=kaggle&logoColor=white)](https://kaggle.com/${social.kaggleUsername})`:""}
-${social.linkedinUsername ? `[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=${badgeStyle}&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/${social.linkedinUsername}/)`:""}
-${social.instagramUsername ? `[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=${badgeStyle}&logo=instagram&logoColor=white)](https://instagram.com/${social.instagramUsername})`:""}
-${social.dribbbleUsername ? `[![Dribble](https://img.shields.io/badge/Dribbble-EA4C89?style=${badgeStyle}&logo=dribbble&logoColor=white)](https://dribbble.com/${social.dribbbleUsername})`:""}
-${social.behanceUsername ? `[![Behance](https://img.shields.io/badge/Behance-1769FF?style=${badgeStyle}&logo=behance&logoColor=white)](https://behance.net/${social.behanceUsername})`:""}
-${social.mediumUsername ? `[![Medium](https://img.shields.io/badge/Medium-12100E?style=${badgeStyle}&logo=medium&logoColor=white)](https://medium.com/${social.mediumUsername})`:""}
-${social.devdottoUsername ? `[![Dev.to](https://img.shields.io/badge/Dev.to-0A0A0A?style=${badgeStyle}&logo=devdotto&logoColor=white)](https://dev.to/${social.devdottoUsername})`:""}
-${social.youtubeUsername ? `[![Youtube](https://img.shields.io/badge/Youtube-FF0000?style=${badgeStyle}&logo=youtube&logoColor=white)](https://youtube.com/@${social.youtubeUsername})`:""}
-${social.leetcodeUsername ? `[![Leetcode](https://img.shields.io/badge/-LeetCode-FFA116?style=${badgeStyle}&logo=LeetCode&logoColor=black)](https://leetcode.com/${social.leetcodeUsername}/)`:""}
-${social.codechefUsername ? `[![Codechef](https://img.shields.io/badge/Codechef-%23B92B27.svg?&style=${badgeStyle}&logo=Codechef&logoColor=white)](https://www.codechef.com/users/${social.codechefUsername})`:""}
-${social.hackerrankUsername ? `[![Hackerrank](https://img.shields.io/badge/Hackerrank-2EC866?style=${badgeStyle}&logo=Hackerrank&logoColor=white)](https://www.hackerrank.com/${social.hackerrankUsername})`:""}
-${social.codeforcesUsername ? `[![Codeforces](https://img.shields.io/badge/Codeforces-445f9d?style=${badgeStyle}&logo=Codeforces&logoColor=white)](https://codeforces.com/profile/${social.codeforcesUsername})`:""}
-${social.hackerearthUsername ? `[![Hackerearth](https://img.shields.io/badge/HackerEarth-%232C3454.svg?&style=${badgeStyle}&logo=HackerEarth&logoColor=Blue)](https://www.hackerearth.com/${social.hackerearthUsername})`:""}
-${social.geeksforgeeksUsername ? `[![Geeksforgeeks](https://img.shields.io/badge/GeeksforGeeks-298D46?&style=${badgeStyle}&logo=GeeksforGeeks&logoColor=white)](https://auth.geeksforgeeks.org/user/${social.geeksforgeeksUsername})`:""}
-
-
-`
+    const [markdowntext, setMarkdownText] = useState("")
 
 const introductionFields=[
   { label: "Hi 👋 I am:", name: "name", placeholder: "Name" },
@@ -151,6 +129,16 @@ const renderSocialInputs = () => {
     </div>
   ));
 };
+const handlePreviewClick = () => {
+  setActiveSection('preview');
+};
+const handleMarkdownClick = () => {
+  setActiveSection('markdown');
+};
+const handleCopyTextClick = () => {
+  navigator.clipboard.writeText(markdowntext);
+  alert('Markdown text copied!');
+};
 const handleInputChange = (e) => {
   const { name, value } = e.target;
   setIntroductionData((prevData) => ({ ...prevData, [name]: value }));
@@ -166,6 +154,16 @@ const handleSocialInputChange = (event) => {
     [name]: value,
   }));
 };
+    useEffect(()=>{
+      const updatedMarkdown = `${introductionData.name ? `# Hi 👋 I am ${introductionData.name}\n` : ""}${introductionData.subtitle ? `## ${introductionData.subtitle}\n`: ""}${introductionData.description ? `${introductionData.description}\n`: ""}
+${aboutData.location ? `* 🌍  I'm based in ${aboutData.location}\n`:""}${aboutData.portfolio && aboutData.portfolioLink ? `* 🖥️  See my portfolio at [${aboutData.portfolio}](${aboutData.portfolioLink})\n`:""}${aboutData.currentlyWorking && aboutData.currentlyWorkingLink ? `* 👨‍💻  I'm currently working on [${aboutData.currentlyWorking}](${aboutData.currentlyWorkingLink})\n`:""}${aboutData.email ? `* ✉️  You can reach me at [${aboutData.email}](mailto:${aboutData.email})\n`:""}${aboutData.currentlyLearning ? `* 🧠  I'm currently learning ${aboutData.currentlyLearning}\n`:""}${aboutData.collaborateOn ? `* 🤝  I'm open to collaborating on ${aboutData.collaborateOn}\n`:""}${aboutData.funFact ? `* ⚡ Fun fact: ${aboutData.funFact}`:""}
+
+${social.githubUsername ? `[![GitHub Follow](https://img.shields.io/badge/GitHub-100000?style=${badgeStyle}&logo=github&logoColor=white)](https://github.com/${social.githubUsername})\n`:""} ${social.twitterUsername ? `[![Twitter Follow](https://img.shields.io/badge/Twitter-1DA1F2?style=${badgeStyle}&logo=twitter&logoColor=white)](https://twitter.com/${social.twitterUsername})\n`:""} ${social.codepenUsername ? `[![Codepen](https://img.shields.io/badge/Codepen-000000?style=${badgeStyle}&logo=codepen&logoColor=white)](https://codepen.io/${social.codepenUsername})\n`:""} ${social.stackoverflowUsername ? `[![Stackoverflow](https://img.shields.io/badge/Stackoverflow-FE7A16?style=${badgeStyle}&logo=stackoverflow&logoColor=white)](https://stackoverflow.com/users/${social.stackoverflowUsername})\n`:""} ${social.codesandboxUsername ? `[![Codesandbox](https://img.shields.io/badge/Codesandbox-000000?style=${badgeStyle}&logo=codesandbox&logoColor=white)](https://codesandbox.io/${social.codesandboxUsername})\n`:""} ${social.kaggleUsername ? `[![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=${badgeStyle}&logo=kaggle&logoColor=white)](https://kaggle.com/${social.kaggleUsername})\n`:""} ${social.linkedinUsername ? `[![Linkedin](https://img.shields.io/badge/-Linkedin-blue?style=${badgeStyle}&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/${social.linkedinUsername}/)\n`:""} ${social.instagramUsername ? `[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=${badgeStyle}&logo=instagram&logoColor=white)](https://instagram.com/${social.instagramUsername})\n`:""} ${social.dribbbleUsername ? `[![Dribble](https://img.shields.io/badge/Dribbble-EA4C89?style=${badgeStyle}&logo=dribbble&logoColor=white)](https://dribbble.com/${social.dribbbleUsername})\n`:""} ${social.behanceUsername ? `[![Behance](https://img.shields.io/badge/Behance-1769FF?style=${badgeStyle}&logo=behance&logoColor=white)](https://behance.net/${social.behanceUsername})\n`:""} ${social.mediumUsername ? `[![Medium](https://img.shields.io/badge/Medium-12100E?style=${badgeStyle}&logo=medium&logoColor=white)](https://medium.com/${social.mediumUsername})\n`:""} ${social.devdottoUsername ? `[![Dev.to](https://img.shields.io/badge/Dev.to-0A0A0A?style=${badgeStyle}&logo=devdotto&logoColor=white)](https://dev.to/${social.devdottoUsername})\n`:""} ${social.youtubeUsername ? `[![Youtube](https://img.shields.io/badge/Youtube-FF0000?style=${badgeStyle}&logo=youtube&logoColor=white)](https://youtube.com/@${social.youtubeUsername})\n`:""} ${social.leetcodeUsername ? `[![Leetcode](https://img.shields.io/badge/-LeetCode-FFA116?style=${badgeStyle}&logo=LeetCode&logoColor=black)](https://leetcode.com/${social.leetcodeUsername}/)\n`:""} ${social.codechefUsername ? `[![Codechef](https://img.shields.io/badge/Codechef-%23B92B27.svg?&style=${badgeStyle}&logo=Codechef&logoColor=white)](https://www.codechef.com/users/${social.codechefUsername})\n`:""} ${social.hackerrankUsername ? `[![Hackerrank](https://img.shields.io/badge/Hackerrank-2EC866?style=${badgeStyle}&logo=Hackerrank&logoColor=white)](https://www.hackerrank.com/${social.hackerrankUsername})\n`:""} ${social.codeforcesUsername ? `[![Codeforces](https://img.shields.io/badge/Codeforces-445f9d?style=${badgeStyle}&logo=Codeforces&logoColor=white)](https://codeforces.com/profile/${social.codeforcesUsername})\n`:""} ${social.hackerearthUsername ? `[![Hackerearth](https://img.shields.io/badge/HackerEarth-%232C3454.svg?&style=${badgeStyle}&logo=HackerEarth&logoColor=Blue)](https://www.hackerearth.com/${social.hackerearthUsername})\n`:""} ${social.geeksforgeeksUsername ? `[![Geeksforgeeks](https://img.shields.io/badge/GeeksforGeeks-298D46?&style=${badgeStyle}&logo=GeeksforGeeks&logoColor=white)](https://auth.geeksforgeeks.org/user/${social.geeksforgeeksUsername})\n`:""}
+      
+      
+      `
+      setMarkdownText(updatedMarkdown);
+    }, [introductionData, aboutData, social, badgeStyle])
     const navigate = useNavigate();
     return(
     <>
@@ -187,11 +185,30 @@ const handleSocialInputChange = (event) => {
             {renderSocialInputs()}
           </div>  
         <div className="section-title">Skills</div>
-        <button className="skill-button"><img src="https://cdn.simpleicons.org/angularjs/E23237" alt="" /></button>
+        <div className="skill-wrapper">
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/c/A8B9CC" alt="" /></button>
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/C++/00599C" alt="" /></button>
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/csharp/239120" alt="" /></button>
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/css3/1575F9" alt="" /></button>
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/dart/0175C2" alt="" /></button>
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/django/092E20" alt="" /></button>
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="" /></button>
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/express/000000" alt="" /></button>
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="" /></button>
+          <button className="skill-button"><img src="https://cdn.simpleicons.org/flutter/02569B" alt="" /></button>
+        </div>
         </div>
         <div className="markdown-container">
+        <button onClick={handlePreviewClick} className="markdown-button">Preview</button>
+        <button onClick={handleMarkdownClick} className="markdown-button">Markdown</button>
+        <button onClick={handleCopyTextClick} className="markdown-button">Copy Text</button> 
+
+        {activeSection === 'preview' && (
           <MarkdownView markdown={markdowntext} options={{ tables: true, emoji: true }} />
-          {/* <textarea name="" id="" cols="30" rows="10">{markdowntext}</textarea> */}
+        )}
+        {activeSection === 'markdown' && (
+          <textarea name="markdown" value={markdowntext} onChange={(e) => setMarkdownText(e.target.value)}></textarea>
+        )}
         </div>
       </div>
     </>
