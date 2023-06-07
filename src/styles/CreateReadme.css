@@ -54,3 +54,18 @@
     font-weight: bold;
     margin:10px 0px;
 }
+.badge-select{
+    padding: 2px;
+    margin-left: 10px;
+}
+.skill-button{
+    width: min-content;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    
+}
+.skill-button img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
