@@ -54,27 +54,33 @@
     font-weight: bold;
     margin:10px 0px;
 }
+.theme-input{
+    padding: 4px;
+    margin-left: 10px;
+}
 .badge-select{
     padding: 2px;
     margin-left: 10px;
 }
-.skill-button{
-    width: min-content;
-    background-color: inherit;
-    border: none;
-    cursor: pointer;
-    
+.skill-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.skill-wrapper input{
+    margin-left: 10px;
 }
 .skill-button img{
-    width: 2.2rem;
-    height: 2.2rem;
+    margin-left: 5px;
+    width: 2.4rem;
+    height: 2.4rem;
+    cursor: pointer;
 }
 textarea{
-    width: 100%;
+    width: 99%;
     height: 90%;
-    /* border: none; */
-    /* outline:none; */
-    /* background-color: inherit; */
+    margin-top: 10px;
+    background-color: white;
     color: inherit;
     overflow: scroll;
     resize: none;
@@ -122,3 +128,4 @@ textarea{
     box-shadow: none;
     transform: translateY(0);
    }
+   
