@@ -86,6 +86,9 @@ textarea{
     resize: none;
     
 }
+.copy-button{
+    float: right;
+}
 .markdown-button {
     appearance: none;
     background-color: transparent;
@@ -99,7 +102,7 @@ textarea{
     font-size: 12px;
     font-weight: 600;
     line-height: normal;
-    margin: 0;
+    margin-right: 5px;
     min-height: 3.75em;
     min-width: 0;
     outline: none;
@@ -119,7 +122,8 @@ textarea{
    
    .markdown-button:hover {
     color: #fff;
-    background-color: #1A1A1A;
+    border-color: #2f3c91;
+    background-color: #4F64F4;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     /* transform: translateY(-2px); */
    }
