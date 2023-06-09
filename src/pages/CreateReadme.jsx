@@ -553,7 +553,11 @@ export default function CreateReadme() {
       },
     }
     const colors = themes[githubStatsTheme];
-    
+    const [githubStatsCard, setGithubStatsCard] = useState(true);
+    const [githubLanguagesCard, setGithubLanguagesCard] = useState(true);
+    const [githubCommitCard, setGithubCommitCard] = useState(true);
+    const [githubGraphCard, setGithubGraphCard] = useState(false);
+    const [buymeacoffeeUsername, setBuymeacoffeeUsername] = useState("");
     const renderIntroductionFields = () => {
       return introductionFields.map((field) => (
         <>
@@ -691,45 +695,22 @@ ${socialMediaPlatforms.map((platform) =>
 
 ${isAnySkillTrue ? `<h3 align="left">Skills:</h3>`:""}
 <p align="left">
-${coreSkillFields.map((skill) => 
-  skills[skill.name] ?
-    `<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a>` :
-    ""
-).join("")}
-${frontendSkillFields.map((skill) => 
-  skills[skill.name] ?
-    `<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a> ` :
-    ""
-).join("")}
-${backendSkillFields.map((skill) => 
-  skills[skill.name] ?
-    `<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a> ` :
-    ""
-).join("")}
-${frameworkSkillFields.map((skill) => 
-  skills[skill.name] ?
-    `<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a> ` :
-    ""
-).join("")}
-${otherSkillFields.map((skill) => 
-  skills[skill.name] ?
-    `<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a> ` :
-    ""
-).join("")}
+${coreSkillFields.map((skill) => skills[skill.name] ? `<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a>\n` :"").join("")}${frontendSkillFields.map((skill) => skills[skill.name] ?`<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a> \n` :"").join("")}${backendSkillFields.map((skill) =>skills[skill.name] ?`<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a> \n` :"").join("")}${frameworkSkillFields.map((skill) =>skills[skill.name] ?`<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a>\n` :"").join("")}${otherSkillFields.map((skill) => skills[skill.name] ?`<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a>\n` :"").join("")}
 </p>
 
 ${social.githubUsername?`
 ### Badges
 
-<b>My GitHub Stats</b>
-<a href="http://www.github.com/${social.githubUsername}"><img src="https://github-readme-stats.vercel.app/api?username=${social.githubUsername}&show_icons=true&title_color=${colors.title_color}&icon_color=${colors.icon_color}&text_color=${colors.text_color}&bg_color=${colors.bg_color}&hide_border=true" alt="${social.githubUsername}'s GitHub stats" /></a>
-<a href="http://www.github.com/${social.githubUsername}"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mspatel18&title_color=${colors.title_color}&icon_color=${colors.icon_color}&text_color=${colors.text_color}&bg_color=${colors.bg_color}&hide_border=true" alt="Top Languages"/></a>
-<a href="http://www.github.com/${social.githubUsername}"><img src="https://github-readme-streak-stats.herokuapp.com/?user=${social.githubUsername}&stroke=${colors.title_color}&background=${colors.bg_color}&ring=${colors.title_color}&fire=${colors.icon_color}&currStreakNum=${colors.icon_color}&currStreakLabel=${colors.icon_color}&sideNums=${colors.title_color}&sideLabels=${colors.title_color}&dates=${colors.text_color}&hide_border=true" alt="Github streak stats"/></a>
-<a href="http://www.github.com/${social.githubUsername}"><img src="https://github-readme-activity-graph.vercel.app/graph?username=${social.githubUsername}&bg_color=${colors.bg_color}&color=${colors.title_color}&line=${colors.icon_color}&point=${colors.title_color}&area_color=${colors.bg_color}&area=true&hide_border=true&custom_title=GitHub%20Commits%20Graph" alt="GitHub Commits Graph" /></a>
+<h4>My GitHub Stats</h4>
+${githubStatsCard ?`<a href="http://www.github.com/${social.githubUsername}"><img src="https://github-readme-stats.vercel.app/api?username=${social.githubUsername}&show_icons=true&title_color=${colors.title_color}&icon_color=${colors.icon_color}&text_color=${colors.text_color}&bg_color=${colors.bg_color}&hide_border=true" alt="${social.githubUsername}'s GitHub stats" /></a>`:""}
+${githubLanguagesCard?`<a href="http://www.github.com/${social.githubUsername}"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mspatel18&langs_count=3&title_color=${colors.title_color}&icon_color=${colors.icon_color}&text_color=${colors.text_color}&bg_color=${colors.bg_color}&hide_border=true" alt="Top Languages"/></a>`:""}
+${githubCommitCard?`<a href="http://www.github.com/${social.githubUsername}"><img src="https://github-readme-streak-stats.herokuapp.com/?user=${social.githubUsername}&stroke=${colors.title_color}&background=${colors.bg_color}&ring=${colors.title_color}&fire=${colors.icon_color}&currStreakNum=${colors.icon_color}&currStreakLabel=${colors.icon_color}&sideNums=${colors.title_color}&sideLabels=${colors.title_color}&dates=${colors.text_color}&hide_border=true" alt="Github streak stats"/></a>`:""}
+${githubGraphCard?`<a href="http://www.github.com/${social.githubUsername}"><img src="https://github-readme-activity-graph.vercel.app/graph?username=${social.githubUsername}&bg_color=${colors.bg_color}&color=${colors.title_color}&line=${colors.icon_color}&point=${colors.title_color}&area_color=${colors.bg_color}&area=true&hide_border=true&custom_title=GitHub%20Commits%20Graph" alt="GitHub Commits Graph" /></a>`:""}
 `:""}
+${buymeacoffeeUsername?`<a href="https://www.buymeacoffee.com/${buymeacoffeeUsername}"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="200" /></a>`:""}
 `
       setMarkdownText(updatedMarkdown);
-    }, [introductionData, aboutData, social, badgeStyle,skills,githubStatsTheme,colors]);
+    }, [introductionData, aboutData, social, badgeStyle,skills,githubStatsTheme,colors,githubStatsCard,githubLanguagesCard,githubCommitCard,githubGraphCard,buymeacoffeeUsername]);
     const navigate = useNavigate();
     return(
     <>
@@ -776,7 +757,21 @@ ${social.githubUsername?`
           <div className="section-title">Github Stats</div>
           <div className="input-title">Github Stats Theme: 
           {renderGithubStatsSelect()}
-            </div>
+          </div>
+          <label htmlFor="">
+            <input type="checkbox" defaultChecked="true" value={githubStatsCard} onChange={(e)=>{setGithubStatsCard(!githubStatsCard)}}/> Stats card
+          </label>
+          <label htmlFor="">
+            <input type="checkbox" defaultChecked="true" value={githubLanguagesCard} onChange={(e)=>{setGithubLanguagesCard(!githubLanguagesCard)}} /> Languages card
+          </label>
+          <label htmlFor="">
+            <input type="checkbox" defaultChecked="true" value={githubCommitCard} onChange={(e)=>{setGithubCommitCard(!githubCommitCard)}} /> Commit card
+          </label>
+          <label htmlFor="">
+            <input type="checkbox"  onChange={(e)=>{setGithubGraphCard(!githubGraphCard)}} /> Graph card
+          </label>
+          <div className="section-title">Support Me</div>
+          <div className="input-title  social-desc"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="200" /><input type="text" placeholder="buymeacoffee Username" value={buymeacoffeeUsername} onChange={(e)=>{setBuymeacoffeeUsername(e.target.value)}} /></div>
         </div>
         <div className="markdown-container">
         <button onClick={handlePreviewClick} className="markdown-button">Preview</button>
