@@ -11,12 +11,12 @@ export default function CreateReadme() {
     const [social, setSocial] = useState({});
     const [skills, setSkills] = useState({});
     const isAnySkillTrue = Object.values(skills).some((skill) => skill);
-    const [githubStatsTheme, setGithubStatsTheme] = useState("default");
+    const [githubStatsTheme, setGithubStatsTheme] = useState("tokyonight");
     const [markdowntext, setMarkdownText] = useState("")
     const introductionFields=[
       { label: "Hi 👋 I am:", name: "name", placeholder: "Name" },
       { label: "🔉 Subtitle:", name: "subtitle", placeholder: "Web Developer and Designer" },
-      { label: "Description:", name: "description", placeholder: "eg. I'm in my 2nd year of college trying my hands at coding, graphic design, and 3D modeling" },
+      { label: "Description:", name: "description", placeholder: "Description" },
     ]
     const aboutFields = [
       { label: "🌍 I'm based in:", name: "location", placeholder: "India" },
@@ -127,6 +127,12 @@ export default function CreateReadme() {
       {name:"amazonwebservices",label:"Amazon Web Services", icon:"amazonwebservices",iconStyle:"original",link: "https://aws.amazon.com/"},
     ]
     const themes = {
+      tokyonight: {
+        title_color: "70a5fd",
+        icon_color: "bf91f3",
+        text_color: "38bdae",
+        bg_color: "1a1b27",
+      },
       default: {
         title_color: "2f80ed",
         icon_color: "4c71f2",
@@ -196,12 +202,6 @@ export default function CreateReadme() {
         icon_color: "af3a03",
         text_color: "427b58",
         bg_color: "fbf1c7",
-      },
-      tokyonight: {
-        title_color: "70a5fd",
-        icon_color: "bf91f3",
-        text_color: "38bdae",
-        bg_color: "1a1b27",
       },
       onedark: {
         title_color: "e4bf7a",
@@ -693,10 +693,10 @@ ${socialMediaPlatforms.map((platform) =>
     ""
 ).join("")}
 
-${isAnySkillTrue ? `<h3 align="left">Skills:</h3>`:""}
-<p align="left">
+${isAnySkillTrue ? `<h3 align="left">Skills:</h3>\n<p align="left">`:""}
+
 ${coreSkillFields.map((skill) => skills[skill.name] ? `<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a>\n` :"").join("")}${frontendSkillFields.map((skill) => skills[skill.name] ?`<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a> \n` :"").join("")}${backendSkillFields.map((skill) =>skills[skill.name] ?`<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a> \n` :"").join("")}${frameworkSkillFields.map((skill) =>skills[skill.name] ?`<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a>\n` :"").join("")}${otherSkillFields.map((skill) => skills[skill.name] ?`<a href="${skill.link}" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-${skill.iconStyle}.svg" width="36" height="36" alt="${skill.name.toUpperCase()}" /></a>\n` :"").join("")}
-</p>
+${isAnySkillTrue ? `</p>`:""}
 
 ${social.githubUsername?`
 ### Badges
@@ -714,8 +714,17 @@ ${buymeacoffeeUsername?`<a href="https://www.buymeacoffee.com/${buymeacoffeeUser
     const navigate = useNavigate();
     return(
     <>
+      <header className="readme-header">
+          <h2>ReadmeWizard</h2>
+          <div>
+              <a href="" onClick={()=>navigate("/")}>Home</a>
+              <a href="http://github.com/mspatel18" target="_blank">Github</a>
+              <a href="" onClick={()=>navigate("/create-readme")}>Create</a>
+          </div>
+      </header> 
       <div className="wrapper">
         <div  className="input-container">
+          <div className="section-title">Enter your details here:</div>
           <div className="section-title">Introduction</div>
           {renderIntroductionFields()}
           <div className="section-title">About Me</div>
