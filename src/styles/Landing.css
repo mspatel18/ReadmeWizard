@@ -1,12 +1,16 @@
 .landing h2{
     margin: 0px;
 }
+body{
+    margin: 0px;
+}
 header{
-    /* background-color: #333; */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0px;
+    border-bottom: #DFE0E6 solid 1px;
 }
 .landing header a{
     margin: 0px 10px;

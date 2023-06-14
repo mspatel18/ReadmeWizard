@@ -10,6 +10,12 @@ h4{
 .readme-header h2{
     margin:0px;
 }
+.readme-header a{
+    margin: 0px 10px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
 .input-container {
     height: 90vh;
     margin: 20px;
@@ -46,7 +52,6 @@ h4{
 .markdown-container {
     height: 90vh;
     position: relative;
-    margin: 20px;
     padding: 20px;
     width: 50%;
     background-color: #f2f2f2;
@@ -142,12 +147,11 @@ textarea {
 
 .markdown-button:hover {
     color: #fff;
-    border-color: #2f3c91;
-    background-color: #4F64F4;
+    border-color: black;
+    background-color: #007DFE;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     /* transform: translateY(-2px); */
 }
-
 .markdown-button:active {
     box-shadow: none;
     transform: translateY(0);
@@ -156,12 +160,12 @@ textarea {
 @media (max-width: 768px) { 
     .input-container {
         width: 95% !important;
-        height: 50vh;
+        height: 100%;
     }
 
     .markdown-container {
         width: 90% !important;
-        height: 50vh;
+        height: 100%;
     }
 
     .wrapper {
@@ -171,5 +175,11 @@ textarea {
     .markdown-button {
         font-size: 10px !important;
         padding: 0.5em 1.3em !important;
+    }
+    .readme-header a{
+        margin: 0px 5px;
+        color: black;
+        font-weight:500;
+        text-decoration: none;
     }
 }
