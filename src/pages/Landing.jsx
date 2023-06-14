@@ -18,7 +18,7 @@ export default function Landing() {
                     <div className="landing-left">
 
                     <div className="main-title">
-                        Creating Profile Readme is now easy
+                        Creating Github Profile Readme is now easy
                     </div>
                     <p>
                         ReadmeWizard is a tool to create readme for your profile. It is easy to use and you can create readme in just few clicks.
