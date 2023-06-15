@@ -21,7 +21,7 @@ export default function Landing() {
                         Creating Github Profile Readme is now easy
                     </div>
                     <p>
-                        ReadmeWizard is a tool to create readme for your profile. It is easy to use and you can create readme in just few clicks.
+                        ReadmeWizard is Github Profile Readme Generator. It is easy to use and you can create readme in just few clicks.
                     </p>
                 <button id="start" onClick={()=>navigate("/create-readme")}>Create Readme</button>
                     </div>
