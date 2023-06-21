@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+header {
+  width: 100%;
+  height: 4rem;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  border-bottom: #dfe0e6 solid 1px;
+  background-color: white;
+  z-index: 10;
+}
+
+header a {
+  margin: 0 10px;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  border: #dfe0e6 solid 1px;
+  padding: 7px 15px;
+  border-radius: 7px;
+}
+
+header a:hover {
+  background-color: #dfe0e6;
+  border: #a5a5a5 solid 1px;
+}
+
+/* HomeScreen Styling */
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Create Readme Styling */
