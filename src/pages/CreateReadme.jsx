@@ -1108,6 +1108,7 @@ export default function CreateReadme() {
           {field.label}
         </div>
         <input
+          className="input-field"
           name={field.name}
           placeholder={field.placeholder}
           value={aboutData[field.name]}
@@ -1123,6 +1124,7 @@ export default function CreateReadme() {
           {field.label}
         </div>
         <input
+          className="input-field"
           name={field.name}
           placeholder={field.placeholder}
           value={aboutData[field.name]}
@@ -1134,14 +1136,17 @@ export default function CreateReadme() {
 
   const renderSocialInputs = () => {
     return socialMediaPlatforms.map((platform) => (
-      <div className="input-title social-desc" key={platform.key}>
-        <img
-          className="social-img"
-          src={`https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/${platform.icon}.svg`}
-          alt={platform.name}
-        />
-        {`${platform.name}: `}
+      <div className="social-tile" key={platform.key}>
+        <div className="input-title social-input-title">
+          <img
+            className="social-img"
+            src={`https://cdn.jsdelivr.net/npm/simple-icons@9.0.0/icons/${platform.icon}.svg`}
+            alt={platform.name}
+          />
+          {`${platform.name}: `}
+        </div>
         <input
+          className="input-field"
           placeholder="username"
           name={platform.key}
           value={social[platform.key]}
@@ -1450,7 +1455,6 @@ ${
     <>
       <div className="wrapper">
         <div className="input-container">
-          <div className="section-title">Enter your details here:</div>
           <div className="section-title">Introduction</div>
           {renderIntroductionFields()}
           <div className="section-title">About Me</div>
@@ -1588,7 +1592,7 @@ ${
               Copy Text
             </button>
           </div>
-          <div className="markdown-editor">
+          <div className="markdown-viewer">
             {activeSection === "preview" && (
               <MarkdownView
                 markdown={markdowntext}
