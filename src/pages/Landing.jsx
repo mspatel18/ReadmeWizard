@@ -10,7 +10,7 @@ export default function Landing() {
                 <header>
                     <h2>ReadmeWizard</h2>
                     <div>
-                        <a href="http://github.com/mspatel18" target="_blank">Github</a>
+                        <a href="http://github.com/mspatel18/ReadmeWizard" target="_blank">Github</a>
                         <a href="" onClick={()=>navigate("/create-readme")}>Create</a>
                     </div>
                 </header>            

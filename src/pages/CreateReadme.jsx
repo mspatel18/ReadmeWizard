@@ -718,7 +718,7 @@ ${buymeacoffeeUsername?`<a href="https://www.buymeacoffee.com/${buymeacoffeeUser
           <h2 onClick={()=>navigate("/")}>ReadmeWizard</h2>
           <div>
               <a href="" onClick={()=>navigate("/")}>Home</a>
-              <a href="http://github.com/mspatel18" target="_blank">Github</a>
+              <a href="http://github.com/mspatel18/ReadmeWizard" target="_blank">Github</a>
               <a href="" onClick={()=>navigate("/create-readme")}>Create</a>
           </div>
       </header> 
