@@ -220,7 +220,7 @@ textarea {
   outline: none;
 } */
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .input-container {
     width: 95% !important;
     height: 100%;
@@ -245,4 +245,4 @@ textarea {
     font-weight: 500;
     text-decoration: none;
   }
-} */
+}

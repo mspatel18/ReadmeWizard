@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <header>
-      <h2>ReadmeWizard</h2>
+      <Link className="logo" to={"/"}>
+        ReadmeWizard
+      </Link>
       <div>
         <a href="http://github.com/mspatel18" target="_blank">
           Github
